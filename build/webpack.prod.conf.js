@@ -6,8 +6,10 @@ function resolve (dir) {
 }
 
 module.exports = {
-    entry: './../src/api.js',
-
+    entry: {
+        "api.min" : './../src/api.js',
+        "api.runtime.common" : './../src/api.runtime.common.js'
+    },
     module: {
         rules: [
             {
@@ -39,7 +41,7 @@ module.exports = {
         // specify your output directory...
         path: path.resolve(__dirname, './../dist'),
         // and filename
-        filename: 'api.js'
+        filename: '[name].js'
     }
 }
 

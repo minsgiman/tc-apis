@@ -2,7 +2,7 @@
   "name": "toastcam-apis",
   "version": "1.0.4",
   "description": "Toastcam API",
-  "main": "dist/api.js",
+  "main": "dist/api.runtime.common.js",
   "author": "mskang",
   "repository": {
     "type": "git",
