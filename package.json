@@ -1,6 +1,6 @@
 {
   "name": "toastcam-apis",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Toastcam API",
   "main": "src/api.js",
   "author": "mskang",

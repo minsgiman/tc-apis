@@ -6,7 +6,7 @@ function resolve (dir) {
 }
 
 module.exports = {
-    entry: './../src/main.js',
+    entry: './../src/api.js',
 
     module: {
         rules: [
