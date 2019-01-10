@@ -17,34 +17,18 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'vue-style-loader',
                     'css-loader'
                 ]
             },
             {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        js: 'babel-loader?presets[]=es2015',
-                        less: 'vue-style-loader!css-loader!less-loader'
-                    }
-                }
-            },
-            {
                 test: /\.js$/,
                 loader: 'babel-loader?presets[]=es2015'
-            },
-            {
-                test: /\.(png|jpg|gif|eot|svg|ttf|woff)$/,
-                loader: 'url-loader?limit=100000'
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.json'],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src')
         }
     },

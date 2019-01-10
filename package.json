@@ -1,6 +1,6 @@
 {
   "name": "toastcam-apis",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Toastcam API",
   "main": "src/main.js",
   "author": "mskang",
@@ -8,7 +8,6 @@
     "type": "git",
     "url": "git@github.nhnent.com:mediatechlab/toastcam-apis.git"
   },
-  "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
@@ -25,10 +24,7 @@
     "jasmine-core": "^3.3.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-htmlfile-reporter": "^0.3.7",
-    "karma-jasmine": "^2.0.0",
-    "vue": "^2.2.6",
-    "vue-devtools": "^5.0.0-beta.1",
-    "vue-router": "^2.3.1"
+    "karma-jasmine": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -80,9 +76,6 @@
     "sinon": "^2.1.0",
     "sinon-chai": "^2.8.0",
     "url-loader": "^0.5.8",
-    "vue-loader": "^11.3.4",
-    "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.3",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
@@ -91,9 +84,7 @@
     "jquery": "^3.3.1",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
-    "style-loader": "^0.20.3",
-    "vue-i18n": "^7.8.0",
-    "vuex": "^3.0.1"
+    "style-loader": "^0.20.3"
   },
   "engines": {
     "node": ">= 4.0.0",
