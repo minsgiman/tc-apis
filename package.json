@@ -1,8 +1,13 @@
 {
-  "name": "vue-tests",
+  "name": "toastcam-apis",
   "version": "1.0.0",
-  "description": "An example project to show testing in Vue JS",
-  "author": "Lily <lily.bickerstaffe",
+  "description": "Toastcam API",
+  "main": "src/main.js",
+  "author": "mskang",
+  "repository": {
+    "type": "git",
+    "url": "git@github.nhnent.com:mediatechlab/toastcam-apis.git"
+  },
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
