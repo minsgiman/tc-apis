@@ -1,6 +1,6 @@
 {
   "name": "toastcam-apis",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Toastcam API",
   "main": "dist/api.common.min.js",
   "module": "dist/api.esm.min.js",
