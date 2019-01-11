@@ -8,7 +8,8 @@ function resolve (dir) {
 module.exports = {
     entry: {
         "api.min" : './../src/api.js',
-        "api.runtime.common" : './../src/api.runtime.common.js'
+        "api.common.min" : './../src/api.common.js',
+        "api.esm.min" : './../src/api.esm.js'
     },
     module: {
         rules: [
@@ -34,18 +35,13 @@ module.exports = {
             '@': resolve('src')
         }
     },
-    // default for pretty much every project
     context: __dirname,
-    // specify your entry/main file
     output: {
-        // specify your output directory...
+        libraryTarget: 'umd',
         path: path.resolve(__dirname, './../dist'),
-        // and filename
         filename: '[name].js'
     }
 }
-
-
 
 if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = '#source-map'
