@@ -1,5 +1,8 @@
-export { default as account } from './services/accountSrv';
-export { default as camera } from './services/cameraSrv';
-export { default as clip } from './services/clipSrv';
-export { default as demo } from './services/demoSrv';
-export { default as notice } from './services/noticeSrv';
+import account from './services/accountSrv';
+import camera from './services/cameraSrv';
+import clip from './services/clipSrv';
+import demo from './services/demoSrv';
+import notice from './services/noticeSrv';
+
+export { account, camera, clip, demo, notice };
+export default { account, camera, clip, demo, notice };
