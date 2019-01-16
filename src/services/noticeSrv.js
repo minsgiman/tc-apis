@@ -1,6 +1,11 @@
+import httpRequest from './../client/httpClient';
+
 const notice = {
-    getNotice: () => {
-        alert('getNotice');
+    getNoticeList: (boardType, pageNumber, pageCount, resultCb, errorCb) => {
+        httpRequest('get', 'notices', { boardType, pageNumber, pageCount }, resultCb, errorCb);
+    },
+    getNoticePopup: (boardType, resultCb, errorCb) => {
+        httpRequest('get', 'notices/popup', { boardType }, resultCb, errorCb);
     }
 };
 

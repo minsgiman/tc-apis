@@ -1,7 +1,7 @@
-import account from './services/accountSrv';
-import camera from './services/cameraSrv';
-import clip from './services/clipSrv';
-import demo from './services/demoSrv';
-import notice from './services/noticeSrv';
-
-module.exports = { account, camera, clip, demo, notice };
+module.exports = {
+    account : require('./services/accountSrv'),
+    camera : require('./services/cameraSrv'),
+    clip : require('./services/clipSrv'),
+    demo : require('./services/demoSrv'),
+    notice : require('./services/noticeSrv')
+};
