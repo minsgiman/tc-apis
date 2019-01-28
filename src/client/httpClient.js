@@ -8,16 +8,11 @@ if (location.href.indexOf('bizcam') != -1) {
 const getRequest = (url, data, resultCb, errorCb) => {
     axios.get(url, {
         params: data,
-    }).then((res) => {
-        console.log('res data : ' + JSON.stringify(res.data));
-        //console.log('params : ' + JSON.stringify(res.config.params));
-        //console.log('url : ' + res.config.url);
-        //console.log('Param data : ' + res.config.data);
+    }).then((res) => { //res.config.params, res.config.url, res.config.data
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
     }).catch((err) => {
-        console.log(err);
         if (errorCb && typeof errorCb === 'function') {
             errorCb(err);
         }
@@ -26,12 +21,10 @@ const getRequest = (url, data, resultCb, errorCb) => {
 
 const putRequest = (url, data, resultCb, errorCb) => {
     axios.put(url, data).then((res) => {
-        console.log(res.data);
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
     }).catch((err) => {
-        console.log(err);
         if (errorCb && typeof errorCb === 'function') {
             errorCb(err);
         }
@@ -40,15 +33,10 @@ const putRequest = (url, data, resultCb, errorCb) => {
 
 const postRequest = (url, data, resultCb, errorCb) => {
     axios.post(url, data).then((res) => {
-        console.log('res data : ' + JSON.stringify(res.data));
-        //console.log('params : ' + res.config.params);
-        //console.log('url : ' + res.config.url);
-        //console.log('Param data : ' + res.config.data);
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
     }).catch((err) => {
-        console.log(err);
         if (errorCb && typeof errorCb === 'function') {
             errorCb(err);
         }
@@ -57,12 +45,10 @@ const postRequest = (url, data, resultCb, errorCb) => {
 
 const deleteRequest = (url, data, resultCb, errorCb) => {
     axios.delete(url, data).then((res) => {
-        console.log(res.data);
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
     }).catch((err) => {
-        console.log(err);
         if (errorCb && typeof errorCb === 'function') {
             errorCb(err);
         }
@@ -85,4 +71,18 @@ const httpRequest = (method, url, data, resultCb, errorCb) => {
     }
 };
 
-export default httpRequest;
+const validateParam = (params, keys) => {
+    let i, length;
+    if (!params || !keys) {
+        return false;
+    }
+
+    for (i = 0, length = keys.length; i < lenth; i+=1) {
+        if (!params.hasOwnProperty(keys[i])) {
+            return false;
+        }
+    }
+    return true;
+};
+
+export { httpRequest, validateParam };
