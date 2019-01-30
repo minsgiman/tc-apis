@@ -37,7 +37,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('get', prefix + '/checkEmailDup', params, resultCb, errorCb);
     },
 
@@ -52,7 +52,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('post', prefix, params, resultCb, errorCb);
     },
 
@@ -65,7 +65,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('put', prefix + '/sendAuthEmail', params, resultCb, errorCb);
     },
 
@@ -79,7 +79,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('put', prefix + '/emailAuth', params, resultCb, errorCb);
     },
 
@@ -92,7 +92,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('get', prefix + '/checkEmail', params, resultCb, errorCb);
     },
 
@@ -105,7 +105,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('put', prefix + '/searchPassword', params, resultCb, errorCb);
     },
 
@@ -120,7 +120,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('post', prefix + '/emailAuthPassword', params, resultCb, errorCb);
     },
 
@@ -133,7 +133,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('post', prefix + '/checkPassword', params, resultCb, errorCb);
     },
 
@@ -147,7 +147,7 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('post', prefix + '/updatePassword', params, resultCb, errorCb);
     },
 
@@ -161,13 +161,13 @@ const account = {
             errorCb('wrong params');
             return;
         }
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('post', prefix + '/login', params, resultCb, errorCb);
     },
 
     /** eMailLogout */
     eMailLogout: (resultCb, errorCb) => {
-        let prefix = (location.href.indexOf('bizcam') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
+        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('get', prefix + '/logout', null, resultCb, errorCb);
     }
 };
