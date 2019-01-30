@@ -8,6 +8,7 @@ if (location.href.indexOf('bizcam.toast.com') != -1) {
 } else {
     prefix = '/json/';
 }
+//TODO: domain, prefix 설정가능하도록 default도
 
 const getRequest = (url, data, resultCb, errorCb) => {
     axios.get(url, {
