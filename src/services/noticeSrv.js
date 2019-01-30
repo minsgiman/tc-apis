@@ -1,7 +1,8 @@
 import { httpRequest, validateParam } from './../client/httpClient';
 
 const notice = {
-    /** getNoticeList
+    /**
+     * getNoticeList
      * @param {Object} params
      * @param {string} params.boardType - boardType
      * @param {number} params.pageNumber - pageNumber
@@ -15,7 +16,8 @@ const notice = {
         httpRequest('get', 'notices', params, resultCb, errorCb);
     },
 
-    /** getNoticePopup
+    /**
+     * getNoticePopup
      * @param {Object} params
      * @param {string} params.boardType - boardType
      */

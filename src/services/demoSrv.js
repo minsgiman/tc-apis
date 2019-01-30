@@ -1,7 +1,8 @@
 import { httpRequest, validateParam } from './../client/httpClient';
 
 const demo = {
-    /** getDemoCamera
+    /**
+     * getDemoCamera
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -13,12 +14,15 @@ const demo = {
         httpRequest('get', 'demo/cameras/' + params.cameraId, null, resultCb, errorCb);
     },
 
-    /** getDemoCameras */
+    /**
+     * getDemoCameras
+     */
     getDemoCameras: (resultCb, errorCb) => {
         httpRequest('get', 'demo/cameras', null, resultCb, errorCb);
     },
 
-    /** getTimeline
+    /**
+     * getTimeline
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.startTime - startTime
@@ -37,7 +41,8 @@ const demo = {
         }, resultCb, errorCb);
     },
 
-    /** getThumbnail
+    /**
+     * getThumbnail
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.sgid - sgid
@@ -58,7 +63,8 @@ const demo = {
         }, resultCb, errorCb);
     },
 
-    /** getToken
+    /**
+     * getToken
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -70,7 +76,8 @@ const demo = {
         httpRequest('get', 'demo/cameras/' + params.cameraId + '/token', null, resultCb, errorCb);
     },
 
-    /** extendToken
+    /**
+     * extendToken
      * @param {Object} params
      * @param {string} params.tokenId - tokenId
      */
@@ -82,7 +89,8 @@ const demo = {
         httpRequest('put', 'demo/cameras/token/' + params.tokenId, null, resultCb, errorCb);
     },
 
-    /** checkIsLastRecord
+    /**
+     * checkIsLastRecord
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -94,7 +102,8 @@ const demo = {
         httpRequest('get', 'demo/cameras/' + params.cameraId + '/lastActivity', null, resultCb, errorCb);
     },
 
-    /** getEventZones
+    /**
+     * getEventZones
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */

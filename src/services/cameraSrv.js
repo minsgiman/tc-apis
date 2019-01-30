@@ -1,7 +1,8 @@
 import { httpRequest, validateParam } from './../client/httpClient';
 
 const camera = {
-    /** getCameraDetail
+    /**
+     * getCameraDetail
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -13,7 +14,8 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId, null, resultCb, errorCb);
     },
 
-    /** getShareCameraDetail
+    /**
+     * getShareCameraDetail
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -25,7 +27,8 @@ const camera = {
         httpRequest('get', 'share/cameras/' + params.cameraId, null, resultCb, errorCb);
     },
 
-    /** getIsLastRecord
+    /**
+     *  getIsLastRecord
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -37,17 +40,22 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId + '/lastActivity', resultCb, errorCb);
     },
 
-    /** getList - get Camera List */
+    /**
+     * getList - get Camera List
+     */
     getList: (resultCb, errorCb) => {
         httpRequest('get', 'v2/cameras', null, resultCb, errorCb);
     },
 
-    /** getShareList - get Shared Camera List */
+    /**
+     * getShareList - get Shared Camera List
+     */
     getShareList: (resultCb, errorCb) => {
         httpRequest('get', 'share/cameras/received', null, resultCb, errorCb);
     },
 
-    /** findCVR
+    /**
+     * findCVR
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.cvrId - cvrId
@@ -61,7 +69,8 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId + '/cvr/' + params.cvrId, { find: params.findDirection }, resultCb, errorCb);
     },
 
-    /** getThumbnail
+    /**
+     * getThumbnail
      * @param {Object} params
      * @param {string} params.cameraId
      * @param {string} params.sgid
@@ -82,7 +91,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** getShareCamThumbnail
+    /**
+     * getShareCamThumbnail
      * @param {Object} params
      * @param {string} params.cameraId
      * @param {string} params.sgid
@@ -105,7 +115,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** orderChange
+    /**
+     * orderChange
      * @param {Object} params
      * @param {string} params.cameraIds - cameraIds
      */
@@ -117,7 +128,8 @@ const camera = {
         httpRequest('put', 'cameras/order', params, resultCb, errorCb);
     },
 
-    /** getCameraNotifyConfig
+    /**
+     * getCameraNotifyConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -129,7 +141,8 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId + '/notifyConfig', null, resultCb, errorCb);
     },
 
-    /** updateCameraNotifyConfig
+    /**
+     * updateCameraNotifyConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.data - data
@@ -142,7 +155,8 @@ const camera = {
         httpRequest('put', 'cameras/' + params.cameraId + '/notifyConfig', params.data, resultCb, errorCb);
     },
 
-    /** getCameraConfig
+    /**
+     * getCameraConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -154,7 +168,8 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId + '/config', null, resultCb, errorCb);
     },
 
-    /** updateCameraConfig
+    /**
+     * updateCameraConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.cameraId - data
@@ -167,7 +182,8 @@ const camera = {
         httpRequest('put', 'cameras/' + params.cameraId + '/config', params.data, resultCb, errorCb);
     },
 
-    /** getSharedCameraConfig
+    /**
+     * getSharedCameraConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -179,7 +195,8 @@ const camera = {
         httpRequest('get', 'share/cameras/' + params.cameraId + '/config', null, resultCb, errorCb);
     },
 
-    /** getShareConfig
+    /**
+     * getShareConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -191,7 +208,8 @@ const camera = {
         httpRequest('get', 'share/cameras/received/config', params, resultCb, errorCb);
     },
 
-    /** upgradeCamera
+    /**
+     * upgradeCamera
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -203,7 +221,8 @@ const camera = {
         httpRequest('post', 'cameras/firmwareUpgrade', params, resultCb, errorCb);
     },
 
-    /** rtmpAudioChat
+    /**
+     * rtmpAudioChat
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.status - status
@@ -216,7 +235,8 @@ const camera = {
         httpRequest('post', 'cameras/' + params.cameraId + '/audioChat', { status: params.status }, resultCb, errorCb);
     },
 
-    /** registSecurePassword
+    /**
+     * registSecurePassword
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.securePassword - securePassword
@@ -229,7 +249,8 @@ const camera = {
         httpRequest('post', 'cameras/' + params.cameraId + '/securePassword', { securePassword: params.securePassword }, resultCb, errorCb);
     },
 
-    /** confirmSecurePassword
+    /**
+     * confirmSecurePassword
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.securePassword - securePassword
@@ -242,7 +263,8 @@ const camera = {
         httpRequest('post', 'cameras/' + params.cameraId + '/secure', { securePassword: params.securePassword }, resultCb, errorCb);
     },
 
-    /** toggleSecureMode
+    /**
+     * toggleSecureMode
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.secureMode - secureMode
@@ -255,7 +277,8 @@ const camera = {
         httpRequest('put', 'cameras/' + params.cameraId + '/secure', { secureMode: params.secureMode }, resultCb, errorCb);
     },
 
-    /** deleteSecurePassword
+    /**
+     * deleteSecurePassword
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -267,7 +290,8 @@ const camera = {
         httpRequest('delete', 'cameras/' + params.cameraId + '/securePassword', null, resultCb, errorCb);
     },
 
-    /** getToken
+    /**
+     * getToken
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -279,7 +303,8 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId + '/token', null, resultCb, errorCb);
     },
 
-    /** getShareCamToken
+    /**
+     * getShareCamToken
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -291,7 +316,8 @@ const camera = {
         httpRequest('get', 'share/cameras/' + params.cameraId + '/token', null, resultCb, errorCb);
     },
 
-    /** getTokenList
+    /**
+     * getTokenList
      * @param {Object} params
      * @param {string} params.cameraIds - cameraIds
      */
@@ -303,7 +329,8 @@ const camera = {
         httpRequest('get', 'cameras/token', params, resultCb, errorCb);
     },
 
-    /** extendToken
+    /**
+     * extendToken
      * @param {Object} params
      * @param {string} params.tokenId - tokenId
      */
@@ -315,7 +342,8 @@ const camera = {
         httpRequest('put', 'cameras/token/' + params.tokenId, null, resultCb, errorCb);
     },
 
-    /** getTimeline
+    /**
+     * getTimeline
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.startTime - startTime
@@ -336,7 +364,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** getShareCamTimeline
+    /**
+     * getShareCamTimeline
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.startTime - startTime
@@ -357,7 +386,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** getEventGroup
+    /**
+     * getEventGroup
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.startTime - startTime
@@ -376,7 +406,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** getDailyEvent
+    /**
+     * getDailyEvent
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.date - date
@@ -389,7 +420,8 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId + '/events/daily', { date: params.date }, resultCb, errorCb);
     },
 
-    /** getShareCamDailyEvent
+    /**
+     * getShareCamDailyEvent
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.date - date
@@ -402,7 +434,8 @@ const camera = {
         httpRequest('get', 'share/cameras/' + params.cameraId + '/events/daily', { date: params.date }, resultCb, errorCb);
     },
 
-    /** getEventZones
+    /**
+     * getEventZones
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -414,7 +447,8 @@ const camera = {
         httpRequest('get', 'cameras/' + params.cameraId + '/alarmZones', resultCb, errorCb);
     },
 
-    /** updateEventZone
+    /**
+     * updateEventZone
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.zoneIndex - zoneIndex
@@ -434,7 +468,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** createEventZone
+    /**
+     * createEventZone
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -446,7 +481,8 @@ const camera = {
         httpRequest('post', 'cameras/' + params.cameraId + '/alarmZones', resultCb, errorCb);
     },
 
-    /** deleteEventZone
+    /**
+     * deleteEventZone
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.zoneIndex - zoneIndex
@@ -459,7 +495,8 @@ const camera = {
         httpRequest('delete', 'cameras/' + params.cameraId + '/alarmZones/' + params.zoneIndex, null, resultCb, errorCb);
     },
 
-    /** updateAlarmZonesFiltersOnOff
+    /**
+     * updateAlarmZonesFiltersOnOff
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.zoneIndex - zoneIndex
@@ -476,7 +513,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** getPrevEventWithRange
+    /**
+     * getPrevEventWithRange
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.scale - zoneIndex
@@ -497,7 +535,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** getNextEventWithRange
+    /**
+     * getNextEventWithRange
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.scale - zoneIndex
@@ -518,7 +557,8 @@ const camera = {
         }, resultCb, errorCb);
     },
 
-    /** shareCamera
+    /**
+     * shareCamera
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.receiverId - receiverId
@@ -533,7 +573,8 @@ const camera = {
         httpRequest('post', 'share/cameras', params, resultCb, errorCb);
     },
 
-    /** getShareReceivers
+    /**
+     * getShareReceivers
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
@@ -545,7 +586,8 @@ const camera = {
         httpRequest('get', 'share/cameras/' + params.cameraId + '/receivers', null, resultCb, errorCb);
     },
 
-    /** removeSharedCamera
+    /**
+     * removeSharedCamera
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.sharedCameraUid - sharedCameraUid
@@ -558,7 +600,8 @@ const camera = {
         httpRequest('delete', 'share/cameras/' + params.cameraId + '/' + params.sharedCameraUid, null, resultCb, errorCb);
     },
 
-    /** rejectSharedCamera
+    /**
+     * rejectSharedCamera
      * @param {Object} params
      * @param {string} params.sharedCameraUid - sharedCameraUid
      * @param {boolean} params.isRejected - isRejected
@@ -571,7 +614,8 @@ const camera = {
         httpRequest('put', 'share/cameras/' + params.sharedCameraUid, { isRejected: params.isRejected }, resultCb, errorCb);
     },
 
-    /** getCamShareOptions
+    /**
+     * getCamShareOptions
      * @param {Object} params
      * @param {string} params.shareId - shareId
      */
@@ -583,7 +627,8 @@ const camera = {
         httpRequest('get', 'share/cameras/' + params.shareId + '/shareOptions', null, resultCb, errorCb);
     },
 
-    /** updateCamShareOptions
+    /**
+     * updateCamShareOptions
      * @param {Object} params
      * @param {string} params.shareId - shareId
      * @param {string} params.shareOptionData - shareOptionData

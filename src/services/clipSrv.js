@@ -1,7 +1,8 @@
 import { httpRequest, validateParam } from './../client/httpClient';
 
 const clip = {
-    /** getClip
+    /**
+     * getClip
      * @param {Object} params
      * @param {string} params.clipId - clipId
      */
@@ -13,7 +14,8 @@ const clip = {
         httpRequest('get', 'clips/' + params.clipId, null, resultCb, errorCb);
     },
 
-    /** getAvailableRange
+    /**
+     * getAvailableRange
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.type - type
@@ -26,7 +28,8 @@ const clip = {
         httpRequest('get', 'clips/availableRange', params, resultCb, errorCb);
     },
 
-    /** shareSnsInfo
+    /**
+     * shareSnsInfo
      * @param {Object} params
      * @param {string} params.clipId - clipId
      */
@@ -38,7 +41,8 @@ const clip = {
         httpRequest('get', 'clips/' + params.clipId + '/shareURL', null, resultCb, errorCb);
     },
 
-    /** labelUpdate
+    /**
+     * labelUpdate
      * @param {Object} params
      * @param {string} params.clipId - clipId
      * @param {string} params.labelName - labelName

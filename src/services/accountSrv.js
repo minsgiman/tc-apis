@@ -1,22 +1,29 @@
 import { httpRequest, validateParam } from './../client/httpClient';
 
 const account = {
-    /** me - get login user info */
+    /**
+     * me - get login user info
+     */
     me: (resultCb, errorCb) => {
         httpRequest('get', 'v2/users/me', null, resultCb, errorCb);
     },
 
-    /** signout */
+    /**
+     * signout
+     */
     signout: (resultCb, errorCb) => {
         httpRequest('delete', 'v2/users/me', null, resultCb, errorCb);
     },
 
-    /** logout */
+    /**
+     * logout
+     */
     logout: (resultCb, errorCb) => {
         httpRequest('get', 'logout', null, resultCb, errorCb);
     },
 
-    /** lbsAgree
+    /**
+     * lbsAgree
      * @param {Object} params
      * @param {boolean} params.isAgreed - agree with location-based service
      */
@@ -28,7 +35,8 @@ const account = {
         httpRequest('put', 'users/me/lbsAgreed', params, resultCb, errorCb);
     },
 
-    /** checkEmailDup
+    /**
+     * checkEmailDup
      * @param {Object} params
      * @param {string} params.email - email address
      */
@@ -41,7 +49,8 @@ const account = {
         httpRequest('get', prefix + '/checkEmailDup', params, resultCb, errorCb);
     },
 
-    /** createUser
+    /**
+     * createUser
      * @param {Object} params
      * @param {string} params.email - email address
      * @param {string} params.password - password
@@ -56,7 +65,8 @@ const account = {
         httpRequest('post', prefix, params, resultCb, errorCb);
     },
 
-    /** sendAuthEmail
+    /**
+     * sendAuthEmail
      * @param {Object} params
      * @param {string} params.email - email address
      */
@@ -69,7 +79,8 @@ const account = {
         httpRequest('put', prefix + '/sendAuthEmail', params, resultCb, errorCb);
     },
 
-    /** emailAuth
+    /**
+     * emailAuth
      * @param {Object} params
      * @param {string} params.email - email address
      * @param {string} params.authKey - authKey
@@ -83,7 +94,8 @@ const account = {
         httpRequest('put', prefix + '/emailAuth', params, resultCb, errorCb);
     },
 
-    /** checkEmail
+    /**
+     * checkEmail
      * @param {Object} params
      * @param {string} params.email - email address
      */
@@ -96,7 +108,8 @@ const account = {
         httpRequest('get', prefix + '/checkEmail', params, resultCb, errorCb);
     },
 
-    /** searchPassword
+    /**
+     * searchPassword
      * @param {Object} params
      * @param {string} params.email - email address
      */
@@ -109,7 +122,8 @@ const account = {
         httpRequest('put', prefix + '/searchPassword', params, resultCb, errorCb);
     },
 
-    /** emailAuthPassword
+    /**
+     * emailAuthPassword
      * @param {Object} params
      * @param {string} params.email - email address
      * @param {string} params.authKey - authKey
@@ -124,7 +138,8 @@ const account = {
         httpRequest('post', prefix + '/emailAuthPassword', params, resultCb, errorCb);
     },
 
-    /** checkPassword
+    /**
+     * checkPassword
      * @param {Object} params
      * @param {string} params.password - password
      */
@@ -137,7 +152,8 @@ const account = {
         httpRequest('post', prefix + '/checkPassword', params, resultCb, errorCb);
     },
 
-    /** updatePassword
+    /**
+     * updatePassword
      * @param {Object} params
      * @param {string} params.password - password
      * @param {string} params.newPassword - newPassword
@@ -151,7 +167,8 @@ const account = {
         httpRequest('post', prefix + '/updatePassword', params, resultCb, errorCb);
     },
 
-    /** login
+    /**
+     * login
      * @param {Object} params
      * @param {string} params.email - email address
      * @param {string} params.password - password
@@ -165,7 +182,9 @@ const account = {
         httpRequest('post', prefix + '/login', params, resultCb, errorCb);
     },
 
-    /** eMailLogout */
+    /**
+     * eMailLogout
+     */
     eMailLogout: (resultCb, errorCb) => {
         let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
         httpRequest('get', prefix + '/logout', null, resultCb, errorCb);
