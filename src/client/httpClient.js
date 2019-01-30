@@ -1,8 +1,12 @@
 import axios from 'axios';
 
-let prefix = '/json/';
-if (location.href.indexOf('bizcam') != -1) {
+let prefix = '';
+if (location.href.indexOf('bizcam.toast.com') != -1) {
     prefix = '/json/biz/';
+} else if (location.href.indexOf('cam.toast.com') != -1) {
+    prefix = '/json/';
+} else {
+    prefix = '/json/';
 }
 
 const getRequest = (url, data, resultCb, errorCb) => {
