@@ -1,9 +1,8 @@
-const apiPrefix = (apiServerUrl.indexOf('bizcam') != -1) ? '/json/biz' : '/json';
-
 let apiServerUrl = location.origin;
 if(!apiServerUrl){
     apiServerUrl = location.protocol+"//"+location.hostname;
 }
+const apiPrefix = (apiServerUrl.indexOf('bizcam.toast.com') != -1) ? '/json/biz' : '/json';
 
 const urlFactory = {
     oAuthLoginRedirectURL: (nexUrl) => {
