@@ -7,5 +7,29 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script src="dist/api.min.js"></script>
+    <script>
+
+        let params = {
+            cameraId: 'AAABBDD',
+            cvrId: 'asccx23',
+            shop: 'biz'
+        };
+
+        let url = '/json/biz/:cameraId/biz/:cvrId/go';
+        const reg = /\/:\w+/gi;
+        const pathParam = url.match(reg);
+        const newParam = pathParam.map(function(item) {
+            return item.replace(/\/:/g, '');
+        });
+debugger;
+        newParam.forEach(function(item) {
+            if (params[item]) {
+                url = url.replace(':' + item, params[item]);
+                delete params[item];
+            }
+        });
+        debugger;
+    </script>
   </body>
 </html>

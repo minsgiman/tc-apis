@@ -38,16 +38,11 @@ import httpRequest from "../../../src/client/httpClient";
 describe('CVR', () => {
     let _res = null;
     beforeEach(function(done) {
-        tCamAPI.camera.findCVR({
-            cameraId: 'AAAAAABB',
-            cvrId: 'dddd',
-            findDirection: 'previous'
-        }, (res) => {
-            _res = res;
-            console.log(JSON.stringify(_res));
+        tCamAPI.call(tCamAPI.camera.GET_CAMERA_DETAIL, {cameraId: 'AAABBBDD'}, (res) => {
+           console.log(res);
             done();
         }, (err) => {
-            console.log(JSON.stringify(err));
+            console.log(err);
             done();
         });
     }, 5 * 1000);

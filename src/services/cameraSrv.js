@@ -1,76 +1,64 @@
-import { httpRequest, validateParam } from './../client/httpClient';
-
 const camera = {
     /**
-     * getCameraDetail
+     * get Camera Detail
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getCameraDetail: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId, null, resultCb, errorCb);
+    GET_CAMERA_DETAIL: {
+        method: 'get',
+        url: 'cameras/:cameraId'
     },
 
     /**
-     * getShareCameraDetail
+     * get ShareCamera Detail
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getShareCameraDetail: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.cameraId, null, resultCb, errorCb);
+    GET_SHARE_CAMERA_DETAIL: {
+        method: 'get',
+        url: 'share/cameras/:cameraId'
     },
 
     /**
-     *  getIsLastRecord
+     *  get IsLastRecord
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getIsLastRecord: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/lastActivity', resultCb, errorCb);
+    CHECK_IS_LAST_RECORD: {
+        method: 'get',
+        url: 'cameras/:cameraId/lastActivity'
     },
 
     /**
-     * getList - get Camera List
+     * get Camera List
      */
-    getList: (resultCb, errorCb) => {
-        httpRequest('get', 'v2/cameras', null, resultCb, errorCb);
+    GET_LIST: {
+        method: 'get',
+        url: 'v2/cameras'
     },
 
     /**
-     * getShareList - get Shared Camera List
+     * get Shared Camera List
      */
-    getShareList: (resultCb, errorCb) => {
-        httpRequest('get', 'share/cameras/received', null, resultCb, errorCb);
+    GET_SHARE_LIST: {
+        method: 'get',
+        url: 'share/cameras/received'
     },
 
     /**
-     * findCVR
+     * find CVR
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.cvrId - cvrId
      * @param {string} params.findDirection - direction to find cvr
      */
-    findCVR: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'cvrId', 'findDirection'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/cvr/' + params.cvrId, { find: params.findDirection }, resultCb, errorCb);
+    FIND_CVR: {
+        method: 'get',
+        url: 'cameras/:cameraId/cvr/:cvrId'
     },
 
     /**
-     * getThumbnail
+     * get Thumbnail
      * @param {Object} params
      * @param {string} params.cameraId
      * @param {string} params.sgid
@@ -78,21 +66,13 @@ const camera = {
      * @param {number} params.count
      * @param {number} params.lastTimestamp
      */
-    getThumbnail: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'sgid', 'scale', 'count', 'lastTimestamp'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/v2/subEvents', {
-            sgid: params.sgid,
-            scale: params.scale,
-            count: params.count,
-            lastTimestamp: params.lastTimestamp
-        }, resultCb, errorCb);
+    GET_THUMBNAIL: {
+        method: 'get',
+        url: 'cameras/:cameraId/v2/subEvents'
     },
 
     /**
-     * getShareCamThumbnail
+     * get ShareCam Thumbnail
      * @param {Object} params
      * @param {string} params.cameraId
      * @param {string} params.sgid
@@ -101,249 +81,189 @@ const camera = {
      * @param {number} params.lastTimestamp
      * @param {string} params.zones
      */
-    getShareCamThumbnail: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'sgid', 'scale', 'count', 'lastTimestamp', 'zones'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.cameraId + '/v2/subEvents', {
-            sgid: params.sgid,
-            scale: params.scale,
-            count: params.count,
-            lastTimestamp: params.lastTimestamp,
-            zones: params.zones
-        }, resultCb, errorCb);
+    GET_SHRARE_CAM_THUMBNAIL: {
+        method: 'get',
+        url: 'share/cameras/:cameraId/v2/subEvents'
     },
 
     /**
-     * orderChange
+     * camera order Change
      * @param {Object} params
      * @param {string} params.cameraIds - cameraIds
      */
-    orderChange: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraIds'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'cameras/order', params, resultCb, errorCb);
+    ORDER_CHANGE: {
+        method: 'put',
+        url: 'cameras/order'
     },
 
     /**
-     * getCameraNotifyConfig
+     * get Camera Notify Config
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getCameraNotifyConfig: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/notifyConfig', null, resultCb, errorCb);
+    GET_CAMERA_NOTIFY_CONFIG: {
+        method: 'get',
+        url: 'cameras/:cameraId/notifyConfig'
     },
 
     /**
-     * updateCameraNotifyConfig
+     * update Camera Notify Config
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.data - data
      */
-    updateCameraNotifyConfig: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'data'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'cameras/' + params.cameraId + '/notifyConfig', params.data, resultCb, errorCb);
+    UPDATE_CAMERA_NOTIFY_CONFIG: {
+        method: 'put',
+        url: 'cameras/:cameraId/notifyConfig'
     },
 
     /**
-     * getCameraConfig
+     * get CameraConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getCameraConfig: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/config', null, resultCb, errorCb);
+    GET_CAMERA_CONFIG: {
+        method: 'get',
+        url: 'cameras/:cameraId/config'
     },
 
     /**
-     * updateCameraConfig
+     * update CameraConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.cameraId - data
      */
-    updateCameraConfig: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'data'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'cameras/' + params.cameraId + '/config', params.data, resultCb, errorCb);
+    UPDATE_CAMERA_CONFIG: {
+        method: 'put',
+        url: 'cameras/:cameraId/config'
     },
 
     /**
-     * getSharedCameraConfig
+     * get SharedCamera Config
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getSharedCameraConfig: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.cameraId + '/config', null, resultCb, errorCb);
+    GET_SHARED_CAMERA_CONFIG: {
+        method: 'get',
+        url: 'share/cameras/:cameraId/config'
     },
 
     /**
-     * getShareConfig
+     * get ShareConfig
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getShareConfig: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/received/config', params, resultCb, errorCb);
+    GET_SHARE_CONFIG: {
+        method: 'get',
+        url: 'share/cameras/received/config'
     },
 
     /**
-     * upgradeCamera
+     * upgrade Camera
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    upgradeCamera: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('post', 'cameras/firmwareUpgrade', params, resultCb, errorCb);
+    UPGRADE_CAMERA: {
+        method: 'post',
+        url: 'cameras/firmwareUpgrade'
     },
 
     /**
-     * rtmpAudioChat
+     * rtmp AudioChat
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.status - status
      */
-    rtmpAudioChat: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'status'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('post', 'cameras/' + params.cameraId + '/audioChat', { status: params.status }, resultCb, errorCb);
+    RTMP_AUDIOCHAT: {
+        method: 'post',
+        url: 'cameras/:cameraId/audioChat'
     },
 
     /**
-     * registSecurePassword
+     * regist SecurePassword
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.securePassword - securePassword
      */
-    registSecurePassword: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'securePassword'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('post', 'cameras/' + params.cameraId + '/securePassword', { securePassword: params.securePassword }, resultCb, errorCb);
+    REGIST_SECURE_PASSWORD: {
+        method: 'post',
+        url: 'cameras/:cameraId/securePassword'
     },
 
     /**
-     * confirmSecurePassword
+     * confirm SecurePassword
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.securePassword - securePassword
      */
-    confirmSecurePassword: (params, securePassword, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'securePassword'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('post', 'cameras/' + params.cameraId + '/secure', { securePassword: params.securePassword }, resultCb, errorCb);
+    CONFIRM_SECURE_PASSWORD: {
+        method: 'post',
+        url: 'cameras/:cameraId/secure'
     },
 
     /**
-     * toggleSecureMode
+     * toggle SecureMode
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.secureMode - secureMode
      */
-    toggleSecureMode: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'secureMode'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'cameras/' + params.cameraId + '/secure', { secureMode: params.secureMode }, resultCb, errorCb);
+    TOGGLE_SECURE_MODE: {
+        method: 'put',
+        url: 'cameras/:cameraId/secure'
     },
 
     /**
-     * deleteSecurePassword
+     * delete SecurePassword
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    deleteSecurePassword: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('delete', 'cameras/' + params.cameraId + '/securePassword', null, resultCb, errorCb);
+    DELETE_SECURE_PASSWORD: {
+        method: 'delete',
+        url: 'cameras/:cameraId/securePassword'
     },
 
     /**
-     * getToken
+     * get Token
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getToken: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/token', null, resultCb, errorCb);
+    GET_TOKEN: {
+        method: 'get',
+        url: 'cameras/:cameraId/token'
     },
 
     /**
-     * getShareCamToken
+     * get SharedCam Token
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getShareCamToken: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.cameraId + '/token', null, resultCb, errorCb);
+    GET_SHARE_CAM_TOKEN: {
+        method: 'get',
+        url: 'share/cameras/:cameraId/token'
     },
 
     /**
-     * getTokenList
+     * get TokenList
      * @param {Object} params
      * @param {string} params.cameraIds - cameraIds
      */
-    getTokenList: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraIds'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/token', params, resultCb, errorCb);
+    GET_TOKEN_LIST: {
+        method: 'get',
+        url: 'cameras/token'
     },
 
     /**
-     * extendToken
+     * extend Token
      * @param {Object} params
      * @param {string} params.tokenId - tokenId
      */
-    extendToken: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['tokenId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'cameras/token/' + params.tokenId, null, resultCb, errorCb);
+    EXTEND_TOKEN: {
+        method: 'put',
+        url: 'cameras/token/:tokenId'
     },
 
     /**
-     * getTimeline
+     * get Timeline
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.startTime - startTime
@@ -351,21 +271,13 @@ const camera = {
      * @param {string} params.scale - scale
      * @param {string} params.shopId - shopId
      */
-    getTimeline: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'startTime', 'endTime', 'scale'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/v2/timeline', {
-            start: params.startTime,
-            end: params.endTime,
-            scale: params.scale,
-            shopId: params.shopId
-        }, resultCb, errorCb);
+    GET_TIMELINE: {
+        method: 'get',
+        url: 'cameras/:cameraId/v2/timeline'
     },
 
     /**
-     * getShareCamTimeline
+     * get SharedCam Timeline
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.startTime - startTime
@@ -373,82 +285,58 @@ const camera = {
      * @param {string} params.scale - scale
      * @param {string} params.shopId - shopId
      */
-    getShareCamTimeline: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'startTime', 'endTime', 'scale'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.cameraId + '/v2/timeline', {
-            start: params.startTime,
-            end: params.endTime,
-            scale: params.scale,
-            shopId: params.shopId
-        }, resultCb, errorCb);
+    GET_SHARE_CAM_TIMELINE: {
+        method: 'get',
+        url: 'share/cameras/:cameraId/v2/timeline'
     },
 
     /**
-     * getEventGroup
+     * get EventGroup
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.startTime - startTime
      * @param {number} params.endTime - endTime
      * @param {string} params.mode - mode
      */
-    getEventGroup: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'startTime', 'endTime', 'mode'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'v2/cameras/' + params.cameraId + '/eventGroups', {
-            start: params.startTime,
-            end: params.endTime,
-            mode: params.mode
-        }, resultCb, errorCb);
+    GET_EVENT_GROUP: {
+        method: 'get',
+        url: 'v2/cameras/:cameraId/eventGroups'
     },
 
     /**
-     * getDailyEvent
+     * get DailyEvent
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.date - date
      */
-    getDailyEvent: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'date'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/events/daily', { date: params.date }, resultCb, errorCb);
+    GET_DAILY_EVENT: {
+        method: 'get',
+        url: 'cameras/:cameraId/events/daily'
     },
 
     /**
-     * getShareCamDailyEvent
+     * get SharedCam DailyEvent
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {number} params.date - date
      */
-    getShareCamDailyEvent: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'date'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.cameraId + '/events/daily', { date: params.date }, resultCb, errorCb);
+    GET_SHARE_CAM_DAILY_EVENT: {
+        method: 'get',
+        url: 'share/cameras/:cameraId/events/daily'
     },
 
     /**
-     * getEventZones
+     * get EventZones
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getEventZones: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/alarmZones', resultCb, errorCb);
+    GET_EVENT_ZONES: {
+        method: 'get',
+        url: 'cameras/:cameraId/alarmZones'
     },
 
     /**
-     * updateEventZone
+     * update EventZone
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.zoneIndex - zoneIndex
@@ -456,65 +344,46 @@ const camera = {
      * @param {string} params.status - status
      * @param {string} params.coordinate - coordinate
      */
-    updateEventZone: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'zoneIndex', 'labelName', 'status', 'coordinate'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'cameras/' + params.cameraId + '/alarmZones/' + params.zoneIndex, {
-            labelName: params.labelName,
-            status: params.status,
-            coordinate: params.coordinate
-        }, resultCb, errorCb);
+    UPDATE_EVENT_ZONE: {
+        method: 'put',
+        url: 'cameras/:cameraId/alarmZones/:zoneIndex'
     },
 
     /**
-     * createEventZone
+     * create EventZone
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    createEventZone: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('post', 'cameras/' + params.cameraId + '/alarmZones', resultCb, errorCb);
+    CREATE_EVENT_ZONE: {
+        method: 'post',
+        url: 'cameras/:cameraId/alarmZones'
     },
 
     /**
-     * deleteEventZone
+     * delete EventZone
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.zoneIndex - zoneIndex
      */
-    deleteEventZone: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'zoneIndex'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('delete', 'cameras/' + params.cameraId + '/alarmZones/' + params.zoneIndex, null, resultCb, errorCb);
+    DELETE_EVENT_ZONE: {
+        method: 'delete',
+        url: 'cameras/:cameraId/alarmZones/:zoneIndex'
     },
 
     /**
-     * updateAlarmZonesFiltersOnOff
+     * update AlarmZones Filters OnOff
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.zoneIndex - zoneIndex
      * @param {string} params.filterMark - filterMark
      */
-    updateAlarmZonesFiltersOnOff: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'zoneIndex', 'filterMark'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'cameras/' + params.cameraId + '/alarmZones/filters', {
-            zoneIndex: params.zoneIndex,
-            filterMark: params.filterMark
-        }, resultCb, errorCb);
+    UPDATE_ALARM_ZONES_FILTER_STATUS: {
+        method: 'put',
+        url: 'cameras/:cameraId/alarmZones/filters'
     },
 
     /**
-     * getPrevEventWithRange
+     * get PrevEvent With Range
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.scale - zoneIndex
@@ -522,21 +391,13 @@ const camera = {
      * @param {string} params.range - range
      * @param {string} params.filters - filters
      */
-    getPrevEventWithRange: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'scale', 'queryTime', 'range', 'filters'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/prevEventWithRange', {
-            scale: params.scale,
-            queryTime: params.queryTime,
-            range: params.range,
-            filters: params.filters
-        }, resultCb, errorCb);
+    GET_PREV_EVENT_WITH_RANGE: {
+        method: 'get',
+        url: 'cameras/:cameraId/prevEventWithRange'
     },
 
     /**
-     * getNextEventWithRange
+     * get NextEvent With Range
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.scale - zoneIndex
@@ -544,101 +405,75 @@ const camera = {
      * @param {string} params.range - range
      * @param {string} params.filters - filters
      */
-    getNextEventWithRange: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'scale', 'queryTime', 'range', 'filters'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'cameras/' + params.cameraId + '/nextEventWithRange', {
-            scale: params.scale,
-            queryTime: params.queryTime,
-            range: params.range,
-            filters: params.filters
-        }, resultCb, errorCb);
+    GET_NEXT_EVENT_WITH_RANGE: {
+        method: 'get',
+        url: 'cameras/:cameraId/nextEventWithRange'
     },
 
     /**
-     * shareCamera
+     * shared Camera List
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.receiverId - receiverId
      * @param {string} params.receiverName - receiverName
      * @param {string} params.shareOptions - shareOptions
      */
-    shareCamera: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'receiverId', 'receiverName', 'shareOptions'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('post', 'share/cameras', params, resultCb, errorCb);
+    SHARE_CAMERA: {
+        method: 'post',
+        url: 'share/cameras'
     },
 
     /**
-     * getShareReceivers
+     * get ShareReceivers
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      */
-    getShareReceivers: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.cameraId + '/receivers', null, resultCb, errorCb);
+    GET_SHARE_RECEIVERS: {
+        method: 'get',
+        url: 'share/cameras/:cameraId/receivers'
     },
 
     /**
-     * removeSharedCamera
+     * remove SharedCamera
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.sharedCameraUid - sharedCameraUid
      */
-    removeSharedCamera: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'sharedCameraUid'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('delete', 'share/cameras/' + params.cameraId + '/' + params.sharedCameraUid, null, resultCb, errorCb);
+    REMOVE_SHARED_CAMERA: {
+        method: 'delete',
+        url: 'share/cameras/:cameraId/:sharedCameraUid'
     },
 
     /**
-     * rejectSharedCamera
+     * reject SharedCamera
      * @param {Object} params
      * @param {string} params.sharedCameraUid - sharedCameraUid
      * @param {boolean} params.isRejected - isRejected
      */
-    rejectSharedCamera: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['sharedCameraUid', 'isRejected'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'share/cameras/' + params.sharedCameraUid, { isRejected: params.isRejected }, resultCb, errorCb);
+    REJECT_SHARED_CAMERA: {
+        method: 'put',
+        url: 'share/cameras/:sharedCameraUid'
     },
 
     /**
-     * getCamShareOptions
+     * get Camera ShareOptions
      * @param {Object} params
      * @param {string} params.shareId - shareId
      */
-    getCamShareOptions: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['shareId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'share/cameras/' + params.shareId + '/shareOptions', null, resultCb, errorCb);
+    GET_CAM_SHARE_OPTIONS: {
+        method: 'get',
+        url: 'share/cameras/:shareId/shareOptions'
     },
 
     /**
-     * updateCamShareOptions
+     * update Camera ShareOptions
      * @param {Object} params
      * @param {string} params.shareId - shareId
      * @param {string} params.shareOptionData - shareOptionData
      */
-    updateCamShareOptions: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['shareId', 'shareOptionData'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'share/cameras/' + params.shareId + '/shareOptions', params.shareOptionData, resultCb, errorCb);
+    UPDATE_CAM_SHARE_OPTIONS: {
+        method: 'put',
+        url: 'share/cameras/:shareId/shareOptions'
     }
 };
 

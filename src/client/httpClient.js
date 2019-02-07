@@ -1,23 +1,19 @@
 import axios from 'axios';
 
-let prefix = '';
-if (location.href.indexOf('bizcam.toast.com') != -1) {
-    prefix = '/json/biz/';
-} else if (location.href.indexOf('cam.toast.com') != -1) {
-    prefix = '/json/';
-} else {
-    prefix = '/json/';
-}
-//TODO: domain, prefix 설정가능하도록 default도
+let domain = '';
+let prefix = '/json/';
 
 const getRequest = (url, data, resultCb, errorCb) => {
-    axios.get(url, {
+    //console.log('url : ' + url + ', data : ' + JSON.stringify(data));
+    axios.get(domain + url, {
         params: data,
-    }).then((res) => { //res.config.params, res.config.url, res.config.data
+    }).then((res) => {
+        //console.log('res.config.params : ' + JSON.stringify(res.config.params) + ', res.config.url : ' + res.config.url + ', res.config.data : ' + JSON.stringify(res.config.data));
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
     }).catch((err) => {
+        //console.log('err : ' + err);
         if (errorCb && typeof errorCb === 'function') {
             errorCb(err);
         }
@@ -25,7 +21,7 @@ const getRequest = (url, data, resultCb, errorCb) => {
 };
 
 const putRequest = (url, data, resultCb, errorCb) => {
-    axios.put(url, data).then((res) => {
+    axios.put(domain + url, data).then((res) => {
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
@@ -37,7 +33,7 @@ const putRequest = (url, data, resultCb, errorCb) => {
 };
 
 const postRequest = (url, data, resultCb, errorCb) => {
-    axios.post(url, data).then((res) => {
+    axios.post(domain + url, data).then((res) => {
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
@@ -49,7 +45,7 @@ const postRequest = (url, data, resultCb, errorCb) => {
 };
 
 const deleteRequest = (url, data, resultCb, errorCb) => {
-    axios.delete(url, data).then((res) => {
+    axios.delete(domain + url, data).then((res) => {
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
@@ -60,8 +56,25 @@ const deleteRequest = (url, data, resultCb, errorCb) => {
     });
 };
 
+const setPathParams = (url, params) => {
+    const pathParamReg = /\/:\w+/gi;
+    let pathParams = url.match(pathParamReg);
+
+    pathParams = pathParams.map(function(item) {
+        return item.replace(/\/:/g, '');
+    });
+    pathParams.forEach(function(item) {
+        if (params[item]) {
+            url = url.replace(':' + item, params[item]);
+            delete params[item];
+        }
+    });
+    return url;
+};
+
 const httpRequest = (method, url, data, resultCb, errorCb) => {
-    const fullUrl = prefix + url;
+    let fullUrl = prefix + url;
+    fullUrl = setPathParams(fullUrl, data);
 
     if (method === 'get') {
         getRequest(fullUrl, data, resultCb, errorCb);
@@ -76,18 +89,17 @@ const httpRequest = (method, url, data, resultCb, errorCb) => {
     }
 };
 
-const validateParam = (params, keys) => {
-    let i, length;
-    if (!params || !keys) {
-        return false;
+const setRequestConfig = (config) => {
+    if (!config) {
+        return;
     }
 
-    for (i = 0, length = keys.length; i < lenth; i+=1) {
-        if (!params.hasOwnProperty(keys[i])) {
-            return false;
-        }
+    if (config.domain) {
+        domain = config.domain;
     }
-    return true;
+    if (config.prefix) {
+        prefix = config.prefix;
+    }
 };
 
-export { httpRequest, validateParam };
+export { httpRequest, setRequestConfig };

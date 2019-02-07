@@ -1,58 +1,44 @@
-import { httpRequest, validateParam } from './../client/httpClient';
-
 const clip = {
     /**
-     * getClip
+     * get Clip
      * @param {Object} params
      * @param {string} params.clipId - clipId
      */
-    getClip: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['clipId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'clips/' + params.clipId, null, resultCb, errorCb);
+    GET_CLIP: {
+        method: 'get',
+        url: 'clips/:clipId'
     },
 
     /**
-     * getAvailableRange
+     * get Available Range
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.type - type
      */
-    getAvailableRange: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['cameraId', 'type'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'clips/availableRange', params, resultCb, errorCb);
+    GET_AVAILABLE_RANGE: {
+        method: 'get',
+        url: 'clips/availableRange'
     },
 
     /**
-     * shareSnsInfo
+     * share Sns Info
      * @param {Object} params
      * @param {string} params.clipId - clipId
      */
-    shareSnsInfo: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['clipId'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('get', 'clips/' + params.clipId + '/shareURL', null, resultCb, errorCb);
+    SHARE_SNS_INFO: {
+        method: 'get',
+        url: 'clips/:clipId/shareURL'
     },
 
     /**
-     * labelUpdate
+     * label Update
      * @param {Object} params
      * @param {string} params.clipId - clipId
      * @param {string} params.labelName - labelName
      */
-    labelUpdate: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['clipId', 'labelName'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'clips/' + params.clipId, { labelName: params.labelName }, resultCb, errorCb);
+    LABEL_UPDATE: {
+        method: 'put',
+        url: 'clips/:clipId'
     }
 };
 

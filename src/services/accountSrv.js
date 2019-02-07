@@ -1,170 +1,169 @@
-import { httpRequest, validateParam } from './../client/httpClient';
-
 const account = {
     /**
      * me - get login user info
      */
-    me: (resultCb, errorCb) => {
-        httpRequest('get', 'v2/users/me', null, resultCb, errorCb);
+    ME: {
+        method: 'get',
+        url: 'v2/users/me',
+
     },
 
     /**
      * signout
      */
-    signout: (resultCb, errorCb) => {
-        httpRequest('delete', 'v2/users/me', null, resultCb, errorCb);
+    SIGNOUT: {
+        method: 'delete',
+        url: 'v2/users/me'
     },
 
     /**
      * logout
      */
-    logout: (resultCb, errorCb) => {
-        httpRequest('get', 'logout', null, resultCb, errorCb);
+    LOGOUT: {
+        method: 'get',
+        url: 'logout'
     },
 
     /**
-     * lbsAgree
+     * location-based service Agree
      * @param {Object} params
      * @param {boolean} params.isAgreed - agree with location-based service
      */
-    lbsAgree: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['isAgreed'])) {
-            errorCb('wrong params');
-            return;
-        }
-        httpRequest('put', 'users/me/lbsAgreed', params, resultCb, errorCb);
+    LBS_AGREE: {
+        method: 'put',
+        url: 'users/me/lbsAgreed'
     },
 
     /**
-     * checkEmailDup
+     * check Email Exist
      * @param {Object} params
      * @param {string} params.email - email address
      */
-    checkEmailDup: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('get', prefix + '/checkEmailDup', params, resultCb, errorCb);
+    CHECK_EMAIL_EXIST: {
+        method: 'get',
+        url: 'b2c/toastcamUser/checkEmailDup'
+    },
+    BIZ_CHECK_EMAIL_EXIST: {
+        method: 'get',
+        url: 'bizToastcamUser/checkEmailDup'
     },
 
     /**
-     * createUser
+     * create User
      * @param {Object} params
      * @param {string} params.email - email address
      * @param {string} params.password - password
      * @param {string} params.country - country
      */
-    createUser: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email', 'password', 'country'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('post', prefix, params, resultCb, errorCb);
+    CREATE_USER: {
+        method: 'post',
+        url: 'b2c/toastcamUser'
+    },
+    BIZ_CREATE_USER: {
+        method: 'post',
+        url: 'bizToastcamUser'
     },
 
     /**
-     * sendAuthEmail
+     * send Auth Email
      * @param {Object} params
      * @param {string} params.email - email address
      */
-    sendAuthEmail: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('put', prefix + '/sendAuthEmail', params, resultCb, errorCb);
+    SEND_AUTH_EMAIL: {
+        method: 'put',
+        url: 'b2c/toastcamUser/sendAuthEmail'
+    },
+    BIZ_SEND_AUTH_EMAIL: {
+        method: 'put',
+        url: 'bizToastcamUser/sendAuthEmail'
     },
 
     /**
-     * emailAuth
+     * email Auth
      * @param {Object} params
      * @param {string} params.email - email address
      * @param {string} params.authKey - authKey
      */
-    emailAuth: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email', 'authKey'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('put', prefix + '/emailAuth', params, resultCb, errorCb);
+    EMAIL_AUTH: {
+        method: 'put',
+        url: 'b2c/toastcamUser/emailAuth'
+    },
+    BIZ_EMAIL_AUTH: {
+        method: 'put',
+        url: 'bizToastcamUser/emailAuth'
     },
 
     /**
-     * checkEmail
+     * check Email
      * @param {Object} params
      * @param {string} params.email - email address
      */
-    checkEmail: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('get', prefix + '/checkEmail', params, resultCb, errorCb);
+    CHECK_EMAIL: {
+        method: 'get',
+        url: 'b2c/toastcamUser/checkEmail'
+    },
+    BIZ_CHECK_EMAIL: {
+        method: 'get',
+        url: 'bizToastcamUser/checkEmail'
     },
 
     /**
-     * searchPassword
+     * search Password
      * @param {Object} params
      * @param {string} params.email - email address
      */
-    searchPassword: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('put', prefix + '/searchPassword', params, resultCb, errorCb);
+    SEARCH_PASSWORD: {
+        method: 'put',
+        url: 'b2c/toastcamUser/searchPassword'
+    },
+    BIZ_SEARCH_PASSWORD: {
+        method: 'put',
+        url: 'bizToastcamUser/searchPassword'
     },
 
     /**
-     * emailAuthPassword
+     * email Auth Password
      * @param {Object} params
      * @param {string} params.email - email address
      * @param {string} params.authKey - authKey
      * @param {string} params.password - password
      */
-    emailAuthPassword: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email', 'authKey', 'password'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('post', prefix + '/emailAuthPassword', params, resultCb, errorCb);
+    EMAIL_AUTH_PASSWORD: {
+        method: 'post',
+        url: 'b2c/toastcamUser/emailAuthPassword'
+    },
+    BIZ_EMAIL_AUTH_PASSWORD: {
+        method: 'post',
+        url: 'bizToastcamUser/emailAuthPassword'
     },
 
     /**
-     * checkPassword
+     * check Password
      * @param {Object} params
      * @param {string} params.password - password
      */
-    checkPassword: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['password'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('post', prefix + '/checkPassword', params, resultCb, errorCb);
+    CHECK_PASSWORD: {
+        method: 'post',
+        url: 'b2c/toastcamUser/checkPassword'
+    },
+    CHECK_PASSWORD: {
+        method: 'post',
+        url: 'bizToastcamUser/checkPassword'
     },
 
     /**
-     * updatePassword
+     * update Password
      * @param {Object} params
      * @param {string} params.password - password
      * @param {string} params.newPassword - newPassword
      */
-    updatePassword: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['password', 'newPassword'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('post', prefix + '/updatePassword', params, resultCb, errorCb);
+    UPDATE_PASSWORD: {
+        method: 'post',
+        url: 'b2c/toastcamUser/updatePassword'
+    },
+    BIZ_UPDATE_PASSWORD: {
+        method: 'post',
+        url: 'bizToastcamUser/updatePassword'
     },
 
     /**
@@ -173,21 +172,25 @@ const account = {
      * @param {string} params.email - email address
      * @param {string} params.password - password
      */
-    login: (params, resultCb, errorCb) => {
-        if (!validateParam(params, ['email', 'password'])) {
-            errorCb('wrong params');
-            return;
-        }
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('post', prefix + '/login', params, resultCb, errorCb);
+    LOGIN: {
+        method: 'post',
+        url: 'b2c/toastcamUser/login'
+    },
+    BIZ_LOGIN: {
+        method: 'post',
+        url: 'bizToastcamUser/login'
     },
 
     /**
-     * eMailLogout
+     * eMail Logout
      */
-    eMailLogout: (resultCb, errorCb) => {
-        let prefix = (location.href.indexOf('bizcam.toast.com') != -1) ? 'bizToastcamUser' : 'b2c/toastcamUser';
-        httpRequest('get', prefix + '/logout', null, resultCb, errorCb);
+    EMAIL_LOGOUT: {
+        method: 'get',
+        url: 'b2c/toastcamUser/logout'
+    },
+    BIZ_EMAIL_LOGOUT: {
+        method: 'get',
+        url: 'bizToastcamUser/logout'
     }
 };
 
