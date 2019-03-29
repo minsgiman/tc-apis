@@ -4,8 +4,7 @@ const account = {
      */
     ME: {
         method: 'get',
-        url: 'v2/users/me',
-
+        url: 'v2/users/me'
     },
 
     /**

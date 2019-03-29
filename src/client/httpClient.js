@@ -33,7 +33,18 @@ const putRequest = (url, data, resultCb, errorCb) => {
 };
 
 const postRequest = (url, data, resultCb, errorCb) => {
-    axios.post(domain + url, data).then((res) => {
+    var key, bodyFormData = new FormData();
+    if (data) {
+        for (key in data) {
+            bodyFormData.set(key, data[key]);
+        }
+    }
+    axios({
+        method: 'post',
+        url: domain + url,
+        data: bodyFormData,
+        config: { headers: {'Content-Type': 'multipart/form-data' }}
+    }).then((res) => {
         if (resultCb && typeof resultCb === 'function') {
             resultCb(res.data);
         }
@@ -60,15 +71,17 @@ const setPathParams = (url, params) => {
     const pathParamReg = /\/:\w+/gi;
     let pathParams = url.match(pathParamReg);
 
-    pathParams = pathParams.map(function(item) {
-        return item.replace(/\/:/g, '');
-    });
-    pathParams.forEach(function(item) {
-        if (params[item]) {
-            url = url.replace(':' + item, params[item]);
-            delete params[item];
-        }
-    });
+    if (pathParams) {
+        pathParams = pathParams.map(function(item) {
+            return item.replace(/\/:/g, '');
+        });
+        pathParams.forEach(function(item) {
+            if (params[item]) {
+                url = url.replace(':' + item, params[item]);
+                delete params[item];
+            }
+        });
+    }
     return url;
 };
 
