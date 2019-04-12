@@ -38,7 +38,7 @@ import httpRequest from "../../../src/client/httpClient";
 describe('CVR', () => {
     let _res = null;
     beforeEach(function(done) {
-        tCamAPI.call(tCamAPI.camera.GET_CAMERA_DETAIL, {cameraId: 'AAABBBDD'}, (res) => {
+        tCamAPI.call(tCamAPI.account.ME, null, (res) => {
            console.log(res);
             done();
         }, (err) => {

@@ -1,5 +1,5 @@
+import 'es6-promise/auto';
 import axios from 'axios';
-
 let domain = '';
 let prefix = '/json/';
 
