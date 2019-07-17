@@ -36,7 +36,7 @@ const postRequest = (url, data, resultCb, errorCb) => {
     var key, bodyFormData = new FormData();
     if (data) {
         for (key in data) {
-            bodyFormData.set(key, data[key]);
+            bodyFormData.append(key, data[key]);
         }
     }
     axios({

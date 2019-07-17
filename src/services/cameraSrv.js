@@ -50,7 +50,7 @@ const camera = {
      * @param {Object} params
      * @param {string} params.cameraId - cameraId
      * @param {string} params.cvrId - cvrId
-     * @param {string} params.findDirection - direction to find cvr
+     * @param {string} params.find - direction to find cvr
      */
     FIND_CVR: {
         method: 'get',
