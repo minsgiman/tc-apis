@@ -474,6 +474,11 @@ const camera = {
     UPDATE_CAM_SHARE_OPTIONS: {
         method: 'put',
         url: 'share/cameras/:shareId/shareOptions'
+    },
+
+    GET_STREAMING_SERVER: {
+        method: 'get',
+        url: 'streamingServer'
     }
 };
 
