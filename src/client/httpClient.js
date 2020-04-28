@@ -87,6 +87,9 @@ const setPathParams = (url, params) => {
 
 const httpRequest = (method, url, data, resultCb, errorCb) => {
     let fullUrl = prefix + url;
+    if (url === 'streamingServer') {
+        fullUrl = fullUrl.replace(/\/demo/, '');
+    }
     fullUrl = setPathParams(fullUrl, data);
 
     if (method === 'get') {
